@@ -1,0 +1,224 @@
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   VARIABLES
+   ========================================================================== */
+
+:root {
+  --color-bg:         #ffffff;
+  --color-border:     #d1d5db;
+  --color-text:       #111111;
+  --color-text-muted: #6b7280;
+  --color-accent:     #2563eb;
+
+  --font-base:      system-ui, -apple-system, sans-serif;
+  --font-size-sm:   0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg:   1.25rem;
+  --font-size-xl:   1.75rem;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+
+  --radius: 8px;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-md);
+  text-align: center;
+}
+
+.site-header__title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.site-header__tagline {
+  margin-top: 4px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero {
+  padding-block: var(--space-lg);
+  text-align: center;
+}
+
+.hero__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.hero__description {
+  max-width: 520px;
+  margin-inline: auto;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   GALLERY
+   ========================================================================== */
+
+.gallery {
+  padding-bottom: var(--space-lg);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+}
+
+.card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.card__body {
+  flex: 1;
+  width: 100%;
+}
+
+.card__name {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.card__role {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
+}
+
+.card__bio {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.card__links {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card__link {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.card__link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-sm);
+  text-align: center;
+}
+
+.site-footer__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (mobile-first)
+   ========================================================================== */
+
+@media (min-width: 600px) {
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
