@@ -1,0 +1,345 @@
+:root {
+  --primary: #2d3748; /* Slate Industrial */
+  --accent: #ed64a6; /* Pastel Pink accent */
+  --accent-soft: #fbb6ce;
+  --secondary: #718096;
+  --bg: #fdfdfd; /* Slightly warm off-white */
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --text: #1a202c;
+  --text-muted: #4a5568;
+  --spacing: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: var(--spacing);
+  background-image:
+    radial-gradient(at 0% 0%, hsla(330, 100%, 95%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(210, 100%, 95%, 1) 0, transparent 50%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: calc(var(--spacing) * 2);
+  border-radius: 24px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.05),
+    0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative Industrial element */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, var(--accent), #6366f1);
+}
+
+header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Outfit", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+header h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--secondary);
+  margin-bottom: 0.25rem;
+}
+
+header h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s;
+  justify-content: center;
+}
+
+.contact-item:hover {
+  color: var(--accent);
+}
+
+.contact-item i {
+  width: 16px;
+  height: 16px;
+}
+
+section {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+section h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.4rem;
+  color: var(--primary);
+  border-bottom: 2px solid var(--accent-soft);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.professional-summary {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--accent);
+}
+
+.experience-item {
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+  position: relative;
+}
+
+.experience-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.experience-item h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.experience-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.project-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+ul li::before {
+  content: "•";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-category {
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  border-radius: 12px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.skill-category:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.skill-category h4 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: var(--bg);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.education-item {
+  margin-bottom: 1.5rem;
+}
+
+.education-item h3 {
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.education-item p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.languages-grid {
+  display: flex;
+  gap: 2rem;
+}
+
+.lang-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.lang-name {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.lang-level {
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+
+footer {
+  margin-top: 4rem;
+  text-align: center;
+  color: var(--secondary);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+  .container {
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .experience-meta {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-item {
+    justify-content: flex-start;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0.5in;
+  }
+  .container {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  .container::before {
+    display: none;
+  }
+  .skill-category {
+    break-inside: avoid;
+    border: 1px solid #eee;
+  }
+  .experience-item {
+    break-inside: avoid;
+  }
+  footer {
+    visibility: hidden;
+  }
+}

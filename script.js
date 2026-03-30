@@ -20,15 +20,14 @@ const profiles = [
     cvPath: 'CVs/Cv-RenaCampos/index.html',
   },
   {
-    name: 'Alum Ejemplo',
+    name: 'Valentina Llantèn Robles',
     role: 'Estudiante de JAVA',
-    bio: 'Descripción breve del alumno. Intereses, stack tecnológico o lo que quiera destacar.',
-    image: 'images/gatoHacker.png', // Ruta de la imagen de perfil
-    banner: '#2563eb', // Color del banner detrás del avatar
-    github: '#',
-    linkedin: '#',
-    cvPath: 'CVs/CV-AlumEjemplo/index.html',
-  }
+    bio: 'Me considero una persona proactiva, responsable y con gran capacidad de aprendizaje. Me gusta trabajar en equipo y estoy siempre dispuesta a enfrentar nuevos desafíos. Mi objetivo es seguir creciendo profesionalmente y aportar valor a los proyectos en los que participo.',
+    banner: '#db2777',
+    github: 'https://github.com/CodeMochi-dev',
+    linkedin: 'https://www.linkedin.com/in/valentina-llant%C3%A9n-robles-a2684a276/',
+    cvPath: 'CVs/CV-ValentinaLLanten/index.html',
+},
 ];
 
 const AVATAR_COLORS = [
