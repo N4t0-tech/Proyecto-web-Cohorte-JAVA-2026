@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portafolio Cohorte 24 — Javalimos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,9 +15,13 @@
     <div class="container">
       <div class="site-header__top">
         <img class="site-header__logo" src="images/Javalimosicon2.png" alt="Javalimos logo featuring a stylized lime with the text Javalimos, representing the developer cohort 2026 community">
-        <h1 class="site-header__title">Javalimos</h1>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar modo oscuro/claro">
-          <span class="theme-toggle__icon">🌙</span>
+        <div class="site-header__brand">
+          <img class="site-header__title-img" src="images/headerTitle.png" alt="Javalimos">
+        </div>
+        <button class="theme-toggle" id="theme-toggle" role="switch" aria-checked="false" aria-label="Alternar modo oscuro/claro">
+          <span class="theme-toggle__thumb">
+            <span class="theme-toggle__icon">🌙</span>
+          </span>
         </button>
       </div>
       <p class="site-header__tagline">Cohorte 24 · Portafolio de desarrolladores</p>
@@ -30,6 +37,7 @@
           Un grupo de desarrolladores comprometidos con el aprendizaje,
           la colaboración y la construcción de proyectos reales.
         </p>
+        <p class="hero__count"><span id="dev-count">0</span> desarrolladores</p>
       </div>
     </section>
 

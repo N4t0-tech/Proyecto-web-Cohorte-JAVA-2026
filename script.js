@@ -13,20 +13,20 @@ const profiles = [
     name: 'Renato Campos',
     role: 'Estudiante de JAVA',
     bio: 'Apasionado por el desarrollo de software, con experiencia en proyectos académicos y personales. Interesado en aprender nuevas tecnologías y mejorar mis habilidades de programación.',
-    image: '', // Ruta de la imagen de perfil
-    banner: '#e07b54', // Color del banner detrás del avatar
+    image: 'CVs/Cv-RenaCampos/src/perfil.jpg', // Ruta de la imagen de perfil
+    banner: '#2563eb', // Color del banner detrás del avatar
     github: '#',
     linkedin: '#',
     cvPath: 'CVs/Cv-RenaCampos/index.html',
   },
   {
-  name: 'Valentina Llantèn Robles',
-  role: 'Estudiante de JAVA',
-  bio: 'Me considero una persona proactiva, responsable y con gran capacidad de aprendizaje. Me gusta trabajar en equipo y estoy siempre dispuesta a enfrentar nuevos desafíos. Mi objetivo es seguir creciendo profesionalmente y aportar valor a los proyectos en los que participo.',
-  banner: '#db2777',
-  github: 'https://github.com/CodeMochi-dev',
-  linkedin: 'https://www.linkedin.com/in/valentina-llant%C3%A9n-robles-a2684a276/',
-  cvPath: 'CVs/CV-ValentinaLLanten/index.html',
+    name: 'Valentina Llantèn Robles',
+    role: 'Estudiante de JAVA',
+    bio: 'Me considero una persona proactiva, responsable y con gran capacidad de aprendizaje. Me gusta trabajar en equipo y estoy siempre dispuesta a enfrentar nuevos desafíos. Mi objetivo es seguir creciendo profesionalmente y aportar valor a los proyectos en los que participo.',
+    banner: '#db2777',
+    github: 'https://github.com/CodeMochi-dev',
+    linkedin: 'https://www.linkedin.com/in/valentina-llant%C3%A9n-robles-a2684a276/',
+    cvPath: 'CVs/CV-ValentinaLLanten/index.html',
 },
 ];
 
@@ -49,33 +49,23 @@ const initTheme = () => {
   const savedTheme = localStorage.getItem('theme') || 'dark';
   const htmlElement = document.documentElement;
   const themeToggle = document.querySelector('#theme-toggle');
+  const icon = themeToggle.querySelector('.theme-toggle__icon');
 
-  // Aplicar tema guardado
-  if (savedTheme === 'light') {
-    htmlElement.setAttribute('data-theme', 'light');
-    themeToggle.classList.add('light-mode');
-    themeToggle.querySelector('.theme-toggle__icon').textContent = '☀️';
-  } else {
-    htmlElement.removeAttribute('data-theme');
-    themeToggle.classList.remove('light-mode');
-    themeToggle.querySelector('.theme-toggle__icon').textContent = '🌙';
-  }
+  const applyTheme = (theme) => {
+    const isLight = theme === 'light';
+    htmlElement.setAttribute('data-theme', isLight ? 'light' : '');
+    themeToggle.classList.toggle('light-mode', isLight);
+    themeToggle.setAttribute('aria-checked', String(isLight));
+    icon.textContent = isLight ? '☀️' : '🌙';
+  };
 
-  // Escuchar clics en el toggle
+  applyTheme(savedTheme);
+
   themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-    htmlElement.setAttribute('data-theme', newTheme);
+    const isLight = htmlElement.getAttribute('data-theme') === 'light';
+    const newTheme = isLight ? 'dark' : 'light';
     localStorage.setItem('theme', newTheme);
-
-    if (newTheme === 'light') {
-      themeToggle.classList.add('light-mode');
-      themeToggle.querySelector('.theme-toggle__icon').textContent = '☀️';
-    } else {
-      themeToggle.classList.remove('light-mode');
-      themeToggle.querySelector('.theme-toggle__icon').textContent = '🌙';
-    }
+    applyTheme(newTheme);
   });
 };
 
@@ -106,6 +96,9 @@ const createCardHTML = (profile, index) => {
     avatarHTML = `<div class="card__avatar" style="background-color: ${avatarColor}" aria-hidden="true">${initials}</div>`;
   }
 
+  const githubDisabled = !profile.github || profile.github === '#' ? ' card__link--disabled' : '';
+  const linkedinDisabled = !profile.linkedin || profile.linkedin === '#' ? ' card__link--disabled' : '';
+
   return `
     <article class="card">
       <div class="card__avatar-wrapper">
@@ -118,9 +111,9 @@ const createCardHTML = (profile, index) => {
         <p class="card__bio">${profile.bio}</p>
       </div>
       <nav class="card__links" aria-label="Links de ${profile.name}">
-        <a class="card__link" href="${profile.cvPath}">Ver CV</a>
-        <a class="card__link" href="${profile.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="card__link" href="${profile.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="card__link card__link--primary" href="${profile.cvPath}">Ver CV</a>
+        <a class="card__link${githubDisabled}" href="${profile.github}" target="_blank" rel="noopener noreferrer" ${githubDisabled ? 'aria-disabled="true"' : ''}>GitHub</a>
+        <a class="card__link${linkedinDisabled}" href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" ${linkedinDisabled ? 'aria-disabled="true"' : ''}>LinkedIn</a>
       </nav>
     </article>
   `;
@@ -136,4 +129,7 @@ const renderGallery = () => {
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   renderGallery();
+
+  const countEl = document.querySelector('#dev-count');
+  if (countEl) countEl.textContent = profiles.length;
 });
