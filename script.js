@@ -3,6 +3,8 @@ const profiles = [
     name: 'Alum Ejemplo',
     role: 'Estudiante de JAVA',
     bio: 'Descripción breve del alumno. Intereses, stack tecnológico o lo que quiera destacar.',
+    image: 'images/gatoHacker.png', // Ruta de la imagen de perfil
+    banner: '#2563eb', // Color del banner detrás del avatar
     github: '#',
     linkedin: '#',
     cvPath: 'CVs/CV-AlumEjemplo/index.html',
@@ -11,6 +13,8 @@ const profiles = [
     name: 'Renato Campos',
     role: 'Estudiante de JAVA',
     bio: 'Apasionado por el desarrollo de software, con experiencia en proyectos académicos y personales. Interesado en aprender nuevas tecnologías y mejorar mis habilidades de programación.',
+    image: '', // Ruta de la imagen de perfil
+    banner: '#e07b54', // Color del banner detrás del avatar
     github: '#',
     linkedin: '#',
     cvPath: 'CVs/Cv-RenaCampos/index.html',
@@ -80,11 +84,24 @@ const getInitials = (name) =>
 const createCardHTML = (profile, index) => {
   const initials = getInitials(profile.name);
   const avatarColor = AVATAR_COLORS[index % AVATAR_COLORS.length];
+  const bannerColor = profile.banner || avatarColor;
+
+  // Determinar qué avatar mostrar
+  let avatarHTML;
+  
+  if (profile.image) {
+    // Si tiene imagen, mostrar foto
+    avatarHTML = `<img src="${profile.image}" alt="Foto de perfil de ${profile.name}" class="card__image">`;
+  } else {
+    // Si no, mostrar iniciales con color
+    avatarHTML = `<div class="card__avatar" style="background-color: ${avatarColor}" aria-hidden="true">${initials}</div>`;
+  }
 
   return `
     <article class="card">
-      <div class="card__avatar" style="background-color: ${avatarColor}" aria-hidden="true">
-        ${initials}
+      <div class="card__avatar-wrapper">
+        <div class="card__banner" style="background-color: ${bannerColor}"></div>
+        ${avatarHTML}
       </div>
       <div class="card__body">
         <h3 class="card__name">${profile.name}</h3>
