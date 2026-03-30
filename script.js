@@ -19,6 +19,26 @@ const profiles = [
     linkedin: '#',
     cvPath: 'CVs/Cv-RenaCampos/index.html',
   },
+  {
+    name: 'Alum Ejemplo',
+    role: 'Estudiante de JAVA',
+    bio: 'Descripción breve del alumno. Intereses, stack tecnológico o lo que quiera destacar.',
+    image: 'images/gatoHacker.png', // Ruta de la imagen de perfil
+    banner: '#2563eb', // Color del banner detrás del avatar
+    github: '#',
+    linkedin: '#',
+    cvPath: 'CVs/CV-AlumEjemplo/index.html',
+  },
+  {
+    name: 'Alum Ejemplo',
+    role: 'Estudiante de JAVA',
+    bio: 'Descripción breve del alumno. Intereses, stack tecnológico o lo que quiera destacar.',
+    image: 'images/gatoHacker.png', // Ruta de la imagen de perfil
+    banner: '#2563eb', // Color del banner detrás del avatar
+    github: '#',
+    linkedin: '#',
+    cvPath: 'CVs/CV-AlumEjemplo/index.html',
+  },
 ];
 
 const AVATAR_COLORS = [
@@ -97,6 +117,9 @@ const createCardHTML = (profile, index) => {
     avatarHTML = `<div class="card__avatar" style="background-color: ${avatarColor}" aria-hidden="true">${initials}</div>`;
   }
 
+  const githubDisabled = !profile.github || profile.github === '#' ? ' card__link--disabled' : '';
+  const linkedinDisabled = !profile.linkedin || profile.linkedin === '#' ? ' card__link--disabled' : '';
+
   return `
     <article class="card">
       <div class="card__avatar-wrapper">
@@ -109,9 +132,9 @@ const createCardHTML = (profile, index) => {
         <p class="card__bio">${profile.bio}</p>
       </div>
       <nav class="card__links" aria-label="Links de ${profile.name}">
-        <a class="card__link" href="${profile.cvPath}">Ver CV</a>
-        <a class="card__link" href="${profile.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="card__link" href="${profile.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="card__link card__link--primary" href="${profile.cvPath}">Ver CV</a>
+        <a class="card__link${githubDisabled}" href="${profile.github}" target="_blank" rel="noopener noreferrer" ${githubDisabled ? 'aria-disabled="true"' : ''}>GitHub</a>
+        <a class="card__link${linkedinDisabled}" href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" ${linkedinDisabled ? 'aria-disabled="true"' : ''}>LinkedIn</a>
       </nav>
     </article>
   `;
@@ -127,4 +150,7 @@ const renderGallery = () => {
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   renderGallery();
+
+  const countEl = document.querySelector('#dev-count');
+  if (countEl) countEl.textContent = profiles.length;
 });
