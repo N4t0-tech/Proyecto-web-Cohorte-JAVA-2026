@@ -26,7 +26,7 @@ const profiles = [
   banner: '#db2777',
   github: 'https://github.com/CodeMochi-dev',
   linkedin: 'https://www.linkedin.com/in/valentina-llant%C3%A9n-robles-a2684a276/',
-  cvPath: 'git add CVs/CV-ValentinaLLanten/script.js',
+  cvPath: 'CVs/CV-ValentinaLLanten/index.html',
 },
 ];
 
